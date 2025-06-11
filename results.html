@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Result Links - Shree Arbuda Maa Digital</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="home.css">
+    <link rel="stylesheet" href="css/results.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        #loginNavLink{
+            display: none !important;
+        }
+    </style>
+</head>
+<body>
+    <header class="main-header">
+        <nav class="container">
+            <div class="logo">
+                <img src="logo.png" alt="Shree Arbuda Maa Digital & E-Mitra Logo">
+                <a href="index.html"><h1>श्री - Arbuda Maa Digital & E-Mitra</h1></a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="yojna.html">Yojna</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                
+            </ul>
+            <div class="hamburger">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+        </nav>
+    </header>
+
+  
+
+    <section class="results-list-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Results Links</h2>
+                <button class="btn btn-primary admin-only" id="addResultLinkBtn" style="display: none;"><i class="fas fa-plus"></i> Add New Result Link</button>
+            </div>
+            <div class="result-links-container" id="resultLinksContainer">
+                <p class="loading-message">Loading...</p>
+            </div>
+        </div>
+    </section>
+
+    <div id="resultLinkFormModal" class="modal admin-only" style="display: none;">
+        <div class="modal-content">
+            <span class="close-button">×</span>
+            <h2 id="resultModalTitle">Add New Result Link</h2>
+            <form id="resultLinkForm">
+                <input type="hidden" id="currentResultLinkIdEdit">
+                <div class="form-group">
+                    <label for="resultTitle">Result Title:</label>
+                    <input type="text" id="resultTitle" required>
+                </div>
+                <div class="form-group">
+                    <label for="resultLink">Result Link URL:</label>
+                    <input type="url" id="resultLink" placeholder="https://www.example.com/result" required>
+                </div>
+                <div class="form-group">
+                    <label for="resultStatus">Status:</label>
+                    <select id="resultStatus">
+                        <option value="Live"></option>
+                        <option value="Upcoming"></option>
+                        <option value="Archived"></option>
+                    </select>
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary" id="saveResultLinkBtn">Save Link</button>
+                    <button type="button" class="btn btn-outline" id="cancelResultLinkFormBtn">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="loginModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <span class="close-button" id="closeLoginModalBtn">×</span>
+            <h2>Admin Login</h2>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="loginEmail">Email:</label>
+                    <input type="email" id="loginEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="loginPassword">Password:</label>
+                    <input type="password" id="loginPassword" required>
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">Login</button>
+                    <button type="button" class="btn btn-outline" id="cancelLoginBtn">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <footer id="main-footer">
+        <div class="container footer-content">
+            <div class="footer-left">
+                <p>© 2025 Shree Arbuda Maa Digital & E-mitra Harji. All rights reserved.</p>
+           
+            </div>
+            <div class="footer-center">
+                <p>Harji, Rajasthan 343001</p>
+                <p><i class="fas fa-envelope"><a href="mailto:shreearbudamaadigitalharji981@gmail.com"></i>shreearbudamaadigitalharji981@gmail.com</a></p>
+            </div>
+            <div class="footer-right">
+                <div class="social-links">
+                    <a href="https://www.instagram.com/maahi_s708?igsh=MWxhNjUxZXhhNGJhaw==" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://wa.me/9549190705" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                </div>
+                <p  style="font-size: 13px;">
+                    <a href="#" id="loginNavLink">Login</a> 
+                    <a href="#" id="logoutNavLink" style="display: none;">Logout</a>
+                  </p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-auth-compat.js"></script>
+    <script src="js/firebase-config.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/results.js"></script>
+</body>
+</html>

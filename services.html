@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- ✅ SEO Meta Tags -->
+    <title>Shree Arbuda Maa Digital & E Mitra - Services</title>
+    <meta name="description" content="Explore our digital services including Aadhar card update, PAN card,arbuda maa digital, CSC center support, and other E-Mitra services.">
+    <meta name="keywords" content="E-Mitra Services, Aadhar Card, PAN Card, Bill Payment, Digital Seva, CSC Rajasthan, Online Government Services, Arbuda Maa E-Mitra,goverment service,arbuda maa emitra service">
+    <meta name="author" content="mahendra Suthar">
+
+    <!-- ✅ Open Graph Tags (for Social Sharing) -->
+    <meta property="og:title" content="Shree Arbuda Maa Digital & E Mitra - Services">
+    <meta property="og:description" content="Aadhar, PAN, Bill Payment aur anya Rajasthan E-Mitra services - sab kuch ek hi jagah.">
+    <meta property="og:image" content="https://example.com/services-og.jpg"> <!-- Replace with actual image URL -->
+    <meta property="og:url" content="https://arbudamaadigital.netlify.app/services.html"> <!-- Replace with actual page URL -->
+    <meta property="og:type" content="website">
+
+    <!-- ✅ Favicon (optional) -->
+    <link rel="icon" href="logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="home.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-firestore-compat.js"></script>
+    <style>
+        .main-header .logo{
+            font-family: 'poppins';
+        
+
+        }
+        #admin-login-link{
+            display: none;
+        }
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh; /* Minimum viewport height */
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f7f6;
+        }
+
+        main {
+            flex-grow: 1; /* Main content takes available space */
+            padding-bottom: 50px; /* Footer ki height adjust karein agar needed ho */
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+        }
+
+        /* Search Bar Styles */
+        .search-bar-container {
+            margin: 30px auto;
+            text-align: center;
+            padding: 15px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .search-bar-container input {
+            width: 70%;
+            max-width: 600px;
+            padding: 12px 15px;
+            border: 1px solid #c7d0d8;
+            border-radius: 8px;
+            font-size: 1.1em;
+            outline: none;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .search-bar-container input:focus {
+            border-color: #012a57;
+            box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+        }
+
+        .search-bar-container .search-icon {
+            font-size: 1.5em;
+            color: #012449;
+        }
+
+        /* Services Grid Styles */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            padding: 20px 0;
+        }
+
+        .service-card {
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            padding: 25px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .service-card i {
+            font-size: 1.0em;
+            color: #007bff; /* Primary color for icons */
+            margin-bottom: 15px;
+        }
+
+        .service-card h3 {
+            margin-bottom: 10px;
+            color: #333;
+            font-size: 1.4em;
+        }
+
+        .service-card p {
+            font-size: 1em;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        #no-services-message {
+            text-align: center;
+            font-size: 1.2em;
+            color: #888;
+            padding: 50px;
+        }
+
+        /* Admin Panel and Forms (Adjusted for better spacing and appearance) */
+        section {
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.07);
+            padding: 30px;
+            margin-top: 40px;
+        }
+
+        section h2, section h3, section h4 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        form label {
+            font-weight: bold;
+            color: #555;
+            margin-bottom: 5px;
+        }
+
+        form input[type="text"],
+        form input[type="email"],
+        form input[type="password"],
+        form textarea {
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1em;
+            width: 100%;
+            box-sizing: border-box; /* Ensures padding doesn't increase width */
+        }
+
+        form textarea {
+            min-height: 80px;
+            resize: vertical;
+        }
+
+        form button {
+            background-color: #28a745; /* Green for add/update */
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.1em;
+            transition: background-color 0.3s ease;
+        }
+
+        form button[type="button"] { /* Cancel button */
+            background-color: #6c757d; /* Gray for cancel */
+        }
+
+        form button:hover {
+            opacity: 0.9;
+        }
+
+        /* Footer Styles */
+        footer {
+            background-color: #333; /* Footer background color, aap apne hisaab se change kar sakte hain */
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            width: 100%;
+            margin-top: auto; /* Footer ko bottom par push karta hai */
+        }
+
+        footer .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            padding: 0 20px; /* Add padding for smaller screens */
+        }
+
+        .footer-contact p, .footer-contact a {
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.95em;
+        }
+
+        .social-links-footer a {
+            color: white;
+            font-size: 24px;
+            margin: 0 10px;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .social-links-footer a:hover {
+            color: #007bff; /* Highlight social icons on hover */
+        }
+        
+        #admin-login-link, #admin-logout-link {
+            color: #007bff;
+            text-decoration: none;
+            margin: 0 5px;
+        }
+        #admin-login-link:hover, #admin-logout-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive adjustments for the footer */
+        @media (min-width: 768px) {
+            footer .container {
+                flex-direction: row;
+                justify-content: space-between;
+            }
+        }
+        @media (max-width: 768px) {
+    .container { padding: 0 20px; }
+    h2 { font-size: 2.2em; margin-bottom: 40px; }
+    h2::after { width: 80px; height: 4px; }
+  .main-header .logo{
+    font-size: 9px;
+
+  }}
+    </style>
+</head>
+<body>
+    <header class="main-header">
+        <nav class="container">
+            <div class="logo">
+                <img src="logo.png" alt="Shree Arbuda Maa Digital & E-Mitra Logo">
+                <a href="index.html"><h1>श्री - Arbuda Maa Digital & E-Mitra</h1></a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html" >Home</a></li>
+                <li><a href="services.html" class="active">Services</a></li>
+                <li><a href="yojna.html">Yojna</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container">
+        <h1>Hamari Main Services</h1>
+
+        <div class="search-bar-container">
+            <i class="fas fa-search search-icon"></i>
+            <input type="text" id="service-search-input" placeholder="Search for services by title, description, or keywords...">
+        </div>
+
+        <div id="services-grid" class="services-grid">
+            <p id="no-services-message">Abhi koi services available nahi hain.</p> 
+        </div>
+
+        <section id="admin-panel" style="display: none;">
+            <h2>Admin Panel</h2>
+            <form id="add-service-form">
+                <h3>Add New Service</h3>
+                <label for="service-title">Service Title:</label>
+                <input type="text" id="service-title" placeholder="Service Title" required>
+                <label for="service-icon">Service Icon (Font Awesome class):</label>
+                <input type="text" id="service-icon" placeholder="e.g., fas fa-file-alt" required>
+                <label for="service-description">Service Description:</label>
+                <textarea id="service-description" placeholder="Service Description"></textarea>
+                <label for="service-keywords">Keywords (Comma-separated, e.g., Aadhar, card, update):</label>
+                <input type="text" id="service-keywords" placeholder="Enter keywords">
+                <button type="submit">Add Service</button>
+            </form>
+
+            <form id="edit-service-form" style="display: none;">
+                <h3>Edit Service</h3>
+                <input type="hidden" id="edit-service-id">
+                <label for="edit-service-title">Service Title:</label>
+                <input type="text" id="edit-service-title" placeholder="Service Title" required>
+                <label for="edit-service-icon">Service Icon (Font Awesome class):</label>
+                <input type="text" id="edit-service-icon" placeholder="e.g., fas fa-file-alt" required>
+                <label for="edit-service-description">Service Description:</label>
+                <textarea id="edit-service-description" placeholder="Service Description" ></textarea>
+                <label for="edit-service-keywords">Keywords (Comma-separated):</label>
+                <input type="text" id="edit-service-keywords" placeholder="Enter keywords">
+                <button type="submit">Update Service</button>
+                <button type="button" id="cancel-edit">Cancel</button>
+            </form>
+        </section>
+
+        <section id="service-detail-page" style="display: none;">
+            <button id="back-to-services">Back to Services</button>
+            <h2 id="detail-service-title"></h2>
+            <p id="detail-service-description"></p>
+            <p><strong></strong><span id="detail-service-keywords"></span></p>
+
+            <h4 class="see detail">See Details</h4>
+            <div id="service-sub-details" class="sub-detail-grid">
+            </div>
+
+            <section id="admin-sub-detail-panel" style="display: none;">
+                <h4>Add New Sub-Detail</h4>
+                <form id="add-sub-detail-form">
+                    <label for="sub-detail-title">Sub-Detail Title:</label>
+                    <input type="text" id="sub-detail-title" placeholder="Sub-Detail Title" required>
+                    <label for="sub-detail-description">Sub-Detail Description:</label>
+                    <textarea id="sub-detail-description" placeholder="Sub-Detail Description" ></textarea>
+                    <label for="sub-detail-documents">Required Documents (Comma-separated):</label>
+                    <input type="text" id="sub-detail-documents" placeholder="e.g., Aadhar Card, PAN Card, Photo">
+                    <label for="service-keywords">Keywords (comma se alag karein, jaise: aadhaar, update, new):</label>
+                    <input type="text" id="service-keywords" placeholder="Service se jude keywords">
+                    <button type="submit">Add Sub-Detail</button>
+                </form>
+
+                <form id="edit-sub-detail-form" style="display: none;">
+                    <h4>Edit Sub-Detail</h4>
+                    <input type="hidden" id="edit-sub-detail-id">
+                    <label for="edit-sub-detail-title">Sub-Detail Title:</label>
+                    <input type="text" id="edit-sub-detail-title" placeholder="Sub-Detail Title" required>
+                    <label for="edit-sub-detail-description">Sub-Detail Description:</label>
+                    <textarea id="edit-sub-detail-description" placeholder="Sub-Detail Description" ></textarea>
+                    <label for="edit-sub-detail-documents">Required Documents (Comma-separated):</label>
+                    <input type="text" id="edit-sub-detail-documents" placeholder="e.g., Aadhar Card, PAN Card, Photo">
+                    <label for="edit-service-keywords">Keywords (comma se alag karein):</label>
+                    <input type="text" id="edit-service-keywords" placeholder="Service se jude keywords">
+                    <button type="submit">Update Sub-Detail</button>
+                    <button type="button" id="cancel-sub-detail-edit">Cancel</button>
+                </form>
+            </section>
+        </section>
+
+        <div id="admin-login-modal" class="modal" style="display: none;">
+            <div class="modal-content">
+                <span class="close-button">×</span>
+                <h2>Admin Login</h2>
+                <form id="login-form">
+                    <input type="email" id="login-email" placeholder="Email" required>
+                    <input type="password" id="login-password" placeholder="Password" required>
+                    <button type="submit">Login</button>
+                </form>
+                <p id="login-error-message" style="color: red;"></p>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>© 2025 Shree Arbuda Maa Digital & E-Mitra</p>
+            <div class="footer-contact">
+                <a href="https://maps.app.goo.gl/ZyVPcDyEGLEhTxGZ6" target="_blank"> <p><i class="fas fa-map-marker-alt"></i> Shree Arbuda Maa Digital & E-Mitra, RMGB bank ke Samne, Harji, Rajasthan 343001</p></a>
+                <p><i class="fas fa-phone-alt"><a href="tel:+919549190705"></i> +91 9549190705</a></p>
+                <p><i class="fas fa-envelope"><a href="mailto:shreearbudamaadigitalharji981@gmail.com"></i>shreearbudamaadigitalharji981@gmail.com</a></p>
+            </div>
+            <div class="social-links-footer">
+                <a href="https://www.instagram.com/maahi_s708?igsh=MWxhNjUxZXhhNGJhaw==" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://wa.me/9549190705" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            </div>
+            
+        </div>
+        <p style="font-size: 13px;">
+            <a href="#" id="admin-login-link"style="display: none;"></a> 
+            <a href="#" id="admin-logout-link" style="display: none;">Logout</a>
+        </p>
+    </footer>
+
+    <script src="services.js"></script>
+    <script src="script.js"></script>
+    <script type="module">
+
+        // Firebase initialization (assuming you still need this for other functionalities)
+
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.8.1/firebase-app.js";
+
+        const firebaseConfig = {
+
+            apiKey: "AIzaSyDAr_PCvgc5ML6cuSsSrDjsTS0DGWh_Zl4",
+
+            authDomain: "arbudamaaemitra.firebaseapp.com",
+
+            projectId: "arbudamaaemitra",
+
+            storageBucket: "arbudamaaemitra.firebasestorage.app",
+
+            messagingSenderId: "875238923441",
+
+            appId: "1:875238923441:web:e75f8ffd910747fd33d690"
+
+        };
+
+        const app = initializeApp(firebaseConfig);
+
+       
+
+        // Hamburger menu functionality
+
+        const hamburger = document.querySelector('.hamburger');
+
+        const navLinks = document.querySelector('.nav-links');
+
+
+
+        hamburger.addEventListener('click', () => {
+
+            navLinks.classList.toggle('nav-active');
+
+            hamburger.classList.toggle('toggle');
+
+        });
+
+
+
+        // Scroll-to-top button functionality
+
+        const scrollToTopBtn = document.getElementById("scrollToTopBtn");
+
+        window.onscroll = function() {
+
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+
+                // If you have a scroll-to-top button, this will show it.
+
+                // Since it's not in the provided HTML, this part might not be needed.
+
+                // scrollToTopBtn.style.display = "block";
+
+            } else {
+
+                // scrollToTopBtn.style.display = "none";
+
+            }
+
+        };
+
+        if (scrollToTopBtn) { // Check if button exists before adding event listener
+
+            scrollToTopBtn.addEventListener("click", () => {
+
+                window.scrollTo({
+
+                    top: 0,
+
+                    behavior: "smooth"
+
+                });
+
+            });
+
+        }
+
+
+
+        // Animate on scroll (basic implementation)
+
+        const animateOnScrollElements = document.querySelectorAll('.animate-on-scroll');
+
+        const observer = new IntersectionObserver((entries) => {
+
+            entries.forEach(entry => {
+
+                if (entry.isIntersecting) {
+
+                    entry.target.classList.add('is-visible');
+
+                } else {
+
+                    entry.target.classList.remove('is-visible'); // Optional: remove class when not visible
+
+                }
+
+            });
+
+        }, {
+
+            threshold: 0.1
+
+        });
+
+
+
+        animateOnScrollElements.forEach(element => {
+
+            observer.observe(element);
+
+        });
+
+
+
+        // Set current year in footer
+
+        // document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        // The HTML already has 2025, so this line might not be needed if you want it static.
+
+        // Agar dynamic chahiye, toh isko add kar sakte hain.
+
+    </script>
+</body>
+</html>

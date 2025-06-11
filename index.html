@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- ✅ SEO Meta Tags -->
+    <title>Shree Arbuda Maa Digital & E Mitra</title>
+
+    <meta name="description" content="Shree Arbuda Maa Digital Harji – Rajasthan ke digital sevaon ka ek vishwasniya kendra.">
+    <meta name="keywords" content="arbudamaadigital,arbuda maa digital,shree arbuda maa emitra harji,e-mitra, Digital Seva, Arbuda Maa, Aadhar, Pan Card, Rajasthan Services, mahendra emitra , harji emitra, Government Services">
+    <meta name="author" content="mahendra suthar">
+
+    <!-- ✅ Open Graph Tags (for WhatsApp/Facebook sharing) -->
+    <meta property="og:title" content="Shree Arbuda Maa Digital & E Mitra">
+    <meta property="og:description" content="Rajasthan ke digital sevaon ka ek trusted kendra – E-Mitra, Aadhar, Pan Card & More.">
+    <meta property="og:image" content="https://example.com/og-image.jpg"> <!-- Replace with actual image link -->
+    <meta property="og:url" content="https://arbudamaadigital.netlify.app/"> <!-- Replace with your actual site URL -->
+    <meta property="og:type" content="website">
+
+    <!-- ✅ Favicon (optional but good) -->
+    <link rel="icon" href="logo.png" type="image/x-icon">
+
+    <!-- ✅ CSS and Fonts -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="home.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+    <style>
+        /* Existing CSS for the View More button and card layout for services */
+    
+        /* --- New CSS for Why Choose Us section (Line-by-line information) --- */
+        .why-choose-us-home {
+            background-color: var(--light-bg-color); /* Light background for the section */
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .why-choose-us-home h2 {
+            color: var(--primary-color); /* Main heading color */
+            font-size: 2.5em;
+            margin-bottom: 40px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .why-choose-us-home h2::after {
+            content: '';
+            width: 80px;
+            height: 4px;
+            background-color: var(--accent-color); /* Underline for the heading */
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: -10px;
+            border-radius: 2px;
+        }
+
+        .usp-list {
+            max-width: 800px; /* Max width for the list */
+            margin: 0 auto;
+            padding: 0 20px;
+            text-align: left; /* Align text to the left within the list */
+        }
+
+        .usp-item-line {
+            display: flex; /* Use flexbox for icon and text alignment */
+            align-items: flex-start; /* Align icon and text at the top */
+            margin-bottom: 30px; /* Space between each line item */
+            background-color: #fff; /* White background for each item */
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05); /* Subtle shadow */
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .usp-item-line:last-child {
+            margin-bottom: 0; /* No margin after the last item */
+        }
+
+        .usp-item-line:hover {
+            transform: translateY(-5px); /* Slight lift on hover */
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .usp-item-line .icon-circle {
+            flex-shrink: 0; /* Prevent icon from shrinking */
+            width: 50px;
+            height: 50px;
+            background-color: var(--accent-color); /* Circle background color */
+            border-radius: 50%; /* Make it a circle */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 20px; /* Space between circle and text */
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .usp-item-line .icon-circle i {
+            font-size: 1.8em;
+            color: #fff; /* White icon color */
+        }
+
+        .usp-item-line .text-content {
+            flex-grow: 1; /* Allow text content to take remaining space */
+        }
+
+        .usp-item-line h3 {
+            font-size: 1.5em;
+            color: var(--dark-text-color); /* Heading color for the point */
+            margin-top: 0;
+            margin-bottom: 8px;
+        }
+
+        .usp-item-line p {
+            font-size: 0.95em;
+            color: var(--text-color); /* Paragraph text color */
+            line-height: 1.6;
+        }
+
+        /* --- Responsive adjustments for Why Choose Us section --- */
+        @media (max-width: 768px) {
+            
+            .usp-item-line .icon-circle {
+                margin-right: 0; /* Remove right margin when stacked */
+                margin-bottom: 15px; /* Add bottom margin for spacing */
+            }
+            .usp-item-line h3 {
+                font-size: 1.3em; /* Smaller heading inside the item */
+            }
+            .usp-item-line p {
+                font-size: .6em; /* Smaller paragraph text */
+            }
+        }
+
+        @media (max-width: 480px) {
+            .why-choose-us-home {
+                padding: 70px 0; /* Adjust padding for very small screens */
+            }
+            .why-choose-us-home h2 {
+                font-size: 1.8em; /* Even smaller heading on mobile */
+            
+            }
+            .usp-list {
+                padding: 1px;
+                width: 50vh; /* Adjust list padding */
+                padding-left: 0;
+                
+            }
+           
+            .usp-item-line .icon-circle {
+                width: 35px; /* Smaller circle for icons */
+                height: 35px;
+                margin-right: 10px;
+                
+            }
+            .usp-item-line .icon-circle i {
+                font-size: 1.0em; /* Smaller icon size */
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="main-header">
+        <nav class="container">
+            <div class="logo">
+                <img src="logo.png" alt="Shree Arbuda Maa Digital & E-Mitra Logo">
+                <a href="index.html"><h1>श्री - Arbuda Maa Digital & E-Mitra</h1></a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="yojna.html">Yojna</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="home-page-new">
+        <section class="hero-section-home reveal">
+            <div class="container hero-content-home">
+                <div class="hero-text-home slide-in-left">
+                    <h2>Aapka One-Stop Solution for Digital Services!</h2>
+                    <p>Shree Arbuda Maa Digital & E Mitra shop par aapka swagat hai. Hum aapko government services, online forms aur bhi bahut kuch provide karte hain, jisse aapka kaam aasaan ho sake.</p>
+                    <div class="hero-buttons-home">
+                        <a href="services.html" class="btn primary-btn pulse-once">View Services<i class="fas fa-arrow-right"></i></a>
+                        <a href="contact.html" class="btn outline-btn pulse-once"><i class="fas fa-phone-alt"></i>Contact Us</a>
+                    </div>
+                </div>
+                <div class="hero-image-container-home float-up">
+                    <img src="assets/shop.jpg" alt="Shree Arbuda Maa Digital & E-Mitra Shop" class="hero-shop-image">
+                </div>
+            </div>
+        </section>
+
+        <section class="services-overview-home container reveal">
+            <h2>Hamari Main Services</h2>
+            <div class="service-cards-home">
+               <div class="service-card-item slide-in-bottom" data-service-id="admitCard">
+          <a href="admit-cards.html" class="service-card-link">
+          <div class="icon-wrapper"><i class="fas fa-id-card"></i></div>
+         <h3>ADMIT CARD</h3>
+           <p>स्कूल, कॉलेज या किसी भी प्रतियोगिता परीक्षा का एडमिट कार्ड</p>
+          </a>
+          <p class="click-to-view">(click icon to view)</p>
+          </div>
+                <div class="service-card-item slide-in-bottom" style="animation-delay: 0.1s;">
+                    <a href="results.html" class="service-card-link">
+                        <div class="icon-wrapper"><i class="fa-solid fa-square-poll-vertical"></i></div>
+                        <h3>RESULT</h3>
+                        <p>स्कूल, कॉलेज या किसी भी परीक्षा का परिणाम देखें</p>
+                    </a>
+                    <p>(click icon to view)</p>
+                </div>
+                <div class="service-card-item slide-in-bottom" style="animation-delay: 0.1s;">
+                    <a href="vacansy.html" class="service-card-link">
+                        <div class="icon-wrapper"><i class="fa-solid fa-user-tie"></i></div>
+                        <h3>Vacancy</h3>
+                        <p>वैकेंसी – रोजगार के नए अवसर खोजने और देने का एक विश्वसनीय माध्यम।</p>
+                    </a>
+                    <p>(click icon to view)</p>
+                </div>
+                <div class="service-card-item slide-in-bottom" style="animation-delay: 0.2s;">
+                    <a href="ration_card.html" class="service-card-link">
+                        <div class="icon-wrapper"><i class="fa-solid fa-book"></i></div>
+                        <h3>Ration Card Service</h3>
+                        <p>आधार-राशन कार्ड सीडिंग स्थिति, आधार-राशन कार्ड सीडिंग, एनएफएसए आवेदन स्थिति.</p>
+                    </a>
+                    <p>(click icon to view)</p>
+                </div>
+
+                <div class="service-card-item slide-in-bottom" style="animation-delay: 0.3s;">
+                    <a href="college.html" class="service-card-link">
+                        <div class="icon-wrapper"><i class="fa-solid fa-graduation-cap"></i></div>
+                        <h3>College Education</h3>
+                        <p>कॉलेज शिक्षा से संबंधित जानकारी.</p>
+                    </a>
+                    <p>(click icon to view)</p>
+                </div>
+                <div class="service-card-item slide-in-bottom" style="animation-delay: 0.4s;">
+                    <a href="pmsurya.html" class="service-card-link">
+                        <div class="icon-wrapper"><i class="fa-solid fa-sun"></i></div>
+                        <h3>PM Suryoday Yojna</h3>
+                        <p>सौर ऊर्जा का उपयोग करने का बढ़ावा देने हेतु पीएम सूर्योदय योजना.</p>
+                    </a>
+                    
+                    <p>(click icon to view)</p>
+                </div>
+          
+            </div>
+            <div class="view-all-services-home">
+                <a href="services.html" class="btn primary-btn bounce-on-hover">Saari Services Dekhein <i class="fas fa-chevron-right"></i></a>
+            </div>
+        </section>
+
+        <section class="why-choose-us-home reveal">
+            <div class="container">
+                <h2>Humein Kyun Chunein?</h2>
+                <div class="usp-list">
+                    <div class="usp-item-line scale-in-zoom">
+                        <div class="icon-circle"><i class="fas fa-medal"></i></div>
+                        <div class="text-content">
+                            <h3>Vishwasniyata</h3>
+                            <p>Hum reliability aur trust par focus karte hain, aapke kaam ko sahi tareeke se poora karte hain.</p>
+                        </div>
+                    </div>
+                    <div class="usp-item-line scale-in-zoom" style="animation-delay: 0.15s;">
+                        <div class="icon-circle"><i class="fas fa-tachometer-alt"></i></div>
+                        <div class="text-content">
+                            <h3>Tez Service</h3>
+                            <p>Apne kaam mein efficiency laate hain taaki aapka samay bache.</p>
+                        </div>
+                    </div>
+                    <div class="usp-item-line scale-in-zoom" style="animation-delay: 0.3s;">
+                        <div class="icon-circle"><i class="fas fa-user-friends"></i></div>
+                        <div class="text-content">
+                            <h3>Friendly Support</h3>
+                            <p>Har qadam par aapki madad ke liye ek friendly aur knowledgeable team.</p>
+                        </div>
+                    </div>
+                    <div class="usp-item-line scale-in-zoom" style="animation-delay: 0.45s;">
+                        <div class="icon-circle"><i class="fas fa-laptop-code"></i></div>
+                        <div class="text-content">
+                            <h3>Modern Approach</h3>
+                            <p>Nayi technology aur digital solutions ka use karte hain.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta-section-home reveal">
+            <div class="container cta-content-home">
+                <div class="cta-text">
+                    <h2>Kya aap kisi Yojna ke baare mein information chahte hain?</h2>
+                    <p>Hamare Yojna page par aap sabhi sarkari yojnaon ki jaankari le sakte hain, jo aapke liye faydemand ho sakti hain.</p>
+                </div>
+                <div class="cta-buttons slide-in-right">
+                    <a href="yojna.html" class="btn secondary-btn"><i class="fas fa-lightbulb"></i> Yojna Dekhein</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+             
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="yojna.html">Yojna</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h3>Contact Us</h3>
+                    <a href="https://maps.app.goo.gl/ZyVPcDyEGLEhTxGZ6" target="_blank"> <p><i class="fas fa-map-marker-alt"></i> Shree Arbuda Maa Digital & E-Mitra, RMGB bank ke Samne, Harji, Rajasthan 343001</p></a>
+                    <p><i class="fas fa-phone-alt"><a href="tel:+919549190705"></i> +91 9549190705</a></p>
+                    <p><i class="fas fa-envelope"><a href="mailto:shreearbudamaadigitalharji981@gmail.com"></i>shreearbudamaadigitalharji981@gmail.com</a></p>
+                </div>
+                <div class="social-links-footer">
+                    <h3>Follow Us</h3>
+                    <a href="https://www.instagram.com/maahi_s708?igsh=MWxhNjUxZXhhNGJhaw==" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://wa.me/9549190705" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                </div>
+               
+                    <a class="vikram" href="https://www.instagram.com/__vikram_05?igsh=MW1kOXNpMTdoa2JpYw==" ><p>Developed by Vikram Suthar
+                    </p></a>
+                
+            </div>
+            <div class="footer-bottom">
+                <p>© <span id="currentYear"></span> Shree Arbuda Maa Digital & E-Mitra. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <button id="scrollToTopBtn" title="Go to top"><i class="fas fa-arrow-up"></i></button>
+<script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-firestore-compat.js"></script>
+<script>
+  // Your web app's Firebase configuration
+  const firebaseConfig = {
+    apiKey: "AIzaSyAMzKRaAqBnpqDRPMrHAX44_EqnNMU5v9k",
+    authDomain: "mahiwebsite.firebaseapp.com",
+    projectId: "mahiwebsite",
+    storageBucket: "mahiwebsite.firebasestorage.app",
+    messagingSenderId: "847666385245",
+    appId: "1:847666385245:web:c776a6341f5002e67058b4",
+    measurementId: "G-GEBGDKLFR1"
+  };
+
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  const db = firebase.firestore();
+</script>
+    <script type="module" src="script.js"></script>
+    <script src="firebase-config.js"></script>
+
+</body>
+</html>
